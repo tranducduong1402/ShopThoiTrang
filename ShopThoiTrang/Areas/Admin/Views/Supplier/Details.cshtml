@@ -1,0 +1,83 @@
+﻿@model MyClass.Models.Supplier
+
+@{
+    ViewBag.Title = "Chi tiết danh mục sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-3">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>CHI TIẾT DANH MỤC SẢN PHẨM</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Edit","Supplier", new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i> Sửa</a>
+                        <a href="@Url.Action("Index","Supplier")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Về danh sách</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:120px">Tên trường</th>
+                        <th>Nội dung</th>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Name)</td>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.slug)</td>
+                        <td>@Html.DisplayFor(model => model.slug)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.ParentId)</td>
+                        <td>@Html.DisplayFor(model => model.ParentId)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Orders)</td>
+                        <td>@Html.DisplayFor(model => model.Orders)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.MetaDesc)</td>
+                        <td>@Html.DisplayFor(model => model.MetaDesc)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.MetaKey)</td>
+                        <td>@Html.DisplayFor(model => model.MetaKey)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.CreatedBy)</td>
+                        <td>@Html.DisplayFor(model => model.CreatedBy)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.CreatedAt)</td>
+                        <td>@Html.DisplayFor(model => model.CreatedAt)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.UpdatedBy)</td>
+                        <td>@Html.DisplayFor(model => model.UpdatedBy)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.UpdatedAt)</td>
+                        <td>@Html.DisplayFor(model => model.UpdatedAt)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Status)</td>
+                        <td>@Html.DisplayFor(model => model.Status)</td>
+                    </tr>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

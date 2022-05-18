@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MyClass.Models.Supplier>
+
+@{
+    ViewBag.Title = "Thùng rác nhà cung cấp";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@section header {
+    <link href="~/Public/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+@section footer {
+    <script src="~/Public/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content my-3">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>THÙNG RÁC NHÀ CUNG CẤP</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Index","Supplier")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Về danh sách</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @Html.Partial("Message")
+                <table class="table table-bordered table-striped" id="myTable">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width:20px">#</th>
+                            <th class="text-center" style="width:50px">Hình</th>
+                            <th>Tên nhà cung cấp</th>
+                            <th>Điện thoại</th>
+                            <th>Email</th>
+                            <th>Địa chỉ</th>
+                            <th>Ngày tạo</th>
+                            <th class="text-center" style="width:240px">Chức năng</th>
+                            <th class="text-center" style="width:20px">ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td><input type="checkbox" name="checkId" value="" /></td>
+                            <td>
+                                <img src="~/Public/images/suppliers/@item.Img" class="img-fluid" alt="Img" />
+                            </td>
+                            <td>@item.Name</td>
+                            <td>@item.Phone</td>
+                            <td>@item.Email</td>
+                            <td>@item.Address</td>
+                            <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                            <td>
+                                <a href="@Url.Action("Retrash","Supplier", new { id = item.Id })" class="btn btn-sm btn-info"><i class="fas fa-undo-alt"></i> Khôi phục</a>
+                                <a href="@Url.Action("Delete","Supplier", new { id = item.Id })" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xóa vĩnh viễn</a>
+                            </td>
+                            <td>@item.Id</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
