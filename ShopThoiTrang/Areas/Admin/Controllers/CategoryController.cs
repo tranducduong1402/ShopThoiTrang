@@ -131,6 +131,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                     Link link = linkDAO.getRow(category.Id, "category");
                     link.Slug = category.Slug;
                     linkDAO.Update(link);
+                    // Cap nhat Menu
                 }
                 TempData["message"] = new XMessage("success", "Cập nhật thành công");
                 return RedirectToAction("Index");

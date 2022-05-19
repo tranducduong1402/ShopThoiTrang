@@ -18,7 +18,7 @@
                         <strong>MENU</strong>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="#" class="btn btn-sm btn-success">NUT</a>
+                        <a href="@Url.Action("Trash","Menu")" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Thùng rác</a>
                     </div>
                 </div>
             </div>
@@ -87,14 +87,16 @@
                                     <span class="float-right btn btn-sm btn-info" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
                                         <i class="fas fa-plus"></i>
                                     </span>
-
                                 </div>
 
                                 <div id="collapsePage" class="collapse p-2 m-2" aria-labelledby="headingPage" data-parent="#accordionExample">
-                                    <fieldset class="form-group">
-                                        <input name="namePage[]" value="1" id="Page1" type="checkbox">
-                                        <label for="Page1">Tiêu đè trang đơn 1</label>
-                                    </fieldset>
+                                    @foreach (var page in ViewBag.ListPage)
+                                    {
+                                        <fieldset class="form-group">
+                                            <input name="itempage" value="@page.Id" id="page_@page.Id" type="checkbox">
+                                            <label for="page_@page.Id">@page.Title</label>
+                                        </fieldset>
+                                    }
 
                                     <fieldset class="form-group">
                                         <input type="submit" name="ThemPage" value="Thêm" class="btn btn-success form-control">

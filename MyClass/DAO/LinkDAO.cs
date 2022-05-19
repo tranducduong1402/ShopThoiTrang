@@ -15,6 +15,14 @@ namespace MyClass.DAO
         {
             return db.Links.ToList();
         }
+        public Link getRow(int? id)
+        {
+            return db.Links.Find(id);
+        }
+        public Link getRow(string slug)
+        {
+            return db.Links.Where(m => m.Slug == slug).FirstOrDefault();
+        }
         // lay 1 mau tin
         public  Link getRow(int tableid, string typelink)
         {

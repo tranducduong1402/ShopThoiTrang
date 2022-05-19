@@ -6,18 +6,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using MyClass.DAO;
 using MyClass.Models;
+using ShopThoiTrang.Library;
 
 namespace ShopThoiTrang.Areas.Admin.Controllers
 {
     public class PostController : Controller
     {
-        private MyDBContext db = new MyDBContext();
+        private PostDAO postDAO = new PostDAO();
+        private TopicDAO topicDAO = new TopicDAO();
 
         // GET: Admin/Post
         public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+            return View(postDAO.getList("Index", "Post"));
         }
 
         // GET: Admin/Post/Details/5
@@ -27,7 +30,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
+            Post post = postDAO.getRow(id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -38,6 +41,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         // GET: Admin/Post/Create
         public ActionResult Create()
         {
+            ViewBag.ListTopic = new SelectList(topicDAO.getList("Index"), "Id", "Name", 0);
             return View();
         }
 
@@ -46,15 +50,18 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TopicId,Title,Slug,Detail,MetaKey,Metadesc,Img,Create_At,Created_By,Created_At,Update_By,Update_At,Status")] Post post)
+        public ActionResult Create(Post post)
         {
             if (ModelState.IsValid)
             {
-                db.Posts.Add(post);
-                db.SaveChanges();
+                post.Type = "Post";
+                post.Slug = XString.str_slug(post.Title);
+                post.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                post.CreatedAt = DateTime.Now;
+                postDAO.Insert(post);
                 return RedirectToAction("Index");
             }
-
+            ViewBag.ListTopic = new SelectList(topicDAO.getList("Index"), "Id", "Name", 0);
             return View(post);
         }
 
@@ -65,11 +72,12 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
+            Post post = postDAO.getRow(id);
             if (post == null)
             {
                 return HttpNotFound();
             }
+            ViewBag.ListTopic = new SelectList(topicDAO.getList("Index"), "Id", "Name", 0);
             return View(post);
         }
 
@@ -78,14 +86,18 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TopicId,Title,Slug,Detail,MetaKey,Metadesc,Img,Create_At,Created_By,Created_At,Update_By,Update_At,Status")] Post post)
+        public ActionResult Edit( Post post)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
-                db.SaveChanges();
+                post.Type = "Post";
+                post.Slug = XString.str_slug(post.Title);
+                post.UpdatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                post.UpdatedAt = DateTime.Now;
+                postDAO.Update(post);
                 return RedirectToAction("Index");
             }
+            ViewBag.ListTopic = new SelectList(topicDAO.getList("Index"), "Id", "Name", 0);
             return View(post);
         }
 
@@ -96,7 +108,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
+            Post post = postDAO.getRow(id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -109,19 +121,11 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Post post = db.Posts.Find(id);
-            db.Posts.Remove(post);
-            db.SaveChanges();
+            Post post = postDAO.getRow(id);
+            postDAO.Delete(post);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
     }
 }

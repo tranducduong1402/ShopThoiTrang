@@ -51,6 +51,10 @@ namespace MyClass.DAO
                 return db.Products.Find(id);
             }
         }
+        public Product getRow(string slug)
+        {
+            return db.Products.Where(m => m.Slug == slug && m.Status == 1).FirstOrDefault();
+        }
         // them mau tin
         public int Insert(Product row)
         {

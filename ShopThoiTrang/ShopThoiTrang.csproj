@@ -2060,6 +2060,9 @@
     <Compile Include="Areas\Admin\Controllers\SupplierController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopicController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Controllers\GiohangController.cs" />
+    <Compile Include="Controllers\LienheController.cs" />
+    <Compile Include="Controllers\TimkiemController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2154,6 +2157,8 @@
     <Content Include="Areas\Admin\Views\Supplier\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Supplier\Trash.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Trash.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSite.cshtml" />
     <Content Include="Views\Site\Index.cshtml" />
@@ -2301,6 +2306,15 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Site\Home.cshtml" />
+    <Content Include="Views\Site\Product.cshtml" />
+    <Content Include="Views\Site\ProductCategory.cshtml" />
+    <Content Include="Views\Site\ProductDetail.cshtml" />
+    <Content Include="Views\Site\Post.cshtml" />
+    <Content Include="Views\Site\PostTopic.cshtml" />
+    <Content Include="Views\Site\PostPage.cshtml" />
+    <Content Include="Views\Site\PostDetail.cshtml" />
+    <Content Include="Views\Site\Error404.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

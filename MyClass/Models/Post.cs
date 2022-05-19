@@ -17,6 +17,7 @@ namespace MyClass.Models
         public int TopicId { get; set; }
         [Required]
         public string Title { get; set; }
+        public string Type { get; set; }
         public string Slug { get; set; }
         [Required]
         public string Detail { get; set; }

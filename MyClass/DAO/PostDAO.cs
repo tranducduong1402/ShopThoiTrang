@@ -16,24 +16,24 @@ namespace MyClass.DAO
             return db.Posts.ToList();
         }
         // Tra ve danh sach ca mau tin
-        public List<Post> getList(string status = "All")
+        public List<Post> getList(string status = "All", string type="Post")
         {
             List<Post> list = null;
             switch (status)
             {
                 case "Index":
                     {
-                        list = db.Posts.Where(m => m.Status != 0).ToList();
+                        list = db.Posts.Where(m => m.Status != 0 && m.Type == type).ToList();
                         break;
                     }
                 case "Trash":
                     {
-                        list = db.Posts.Where(m => m.Status == 0).ToList();
+                        list = db.Posts.Where(m => m.Status == 0 && m.Type == type).ToList();
                         break;
                     }
                 default:
                     {
-                        list = db.Posts.ToList();
+                        list = db.Posts.Where(m=>m.Type==type).ToList();
                         break;
                     }
             }
@@ -50,6 +50,11 @@ namespace MyClass.DAO
             {
                 return db.Posts.Find(id);
             }
+        }
+
+        public Post getRow(string slug)
+        {
+            return db.Posts.Where(m => m.Type == "Post" && m.Slug == slug && m.Status == 1).FirstOrDefault();
         }
         // them mau tin
         public int Insert(Post row)
