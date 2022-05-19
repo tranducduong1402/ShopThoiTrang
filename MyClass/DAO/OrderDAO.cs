@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class OrderDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Order> getList()
+        {
+            return db.Orders.ToList();
+        }
         // Tra ve danh sach ca mau tin
         public List<Order> getList(string status = "All")
         {

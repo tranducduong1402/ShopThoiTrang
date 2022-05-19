@@ -131,6 +131,28 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                 {
                     supplier.Orders += 1;
                 }
+                // Upload file
+                var img = Request.Files["img"];
+                if (img.ContentLength != 0)
+                {
+                    string[] FileExtentions = new string[] { ".jpg", ".jepg", ".png", ".gif" };
+                    // Kiem tra tap tin
+                    if (FileExtentions.Contains(img.FileName.Substring(img.FileName.LastIndexOf("."))))
+                    {
+                        // upload hinh
+                        string imgName = supplier.Slug + img.FileName.Substring(img.FileName.LastIndexOf("."));
+                        supplier.Img = imgName;
+                        string PathDir = "~/Public/images/suppliers/";
+                        string PathFile = Path.Combine(Server.MapPath(PathDir), imgName);
+                        // Xoa file 
+                        if(supplier.Img.Length>0)
+                        {
+                            string DelPath = Path.Combine(Server.MapPath(PathDir), supplier.Img);
+                            System.IO.File.Delete(DelPath); // xoa hinh
+                        }
+                        img.SaveAs(PathFile);
+                    }
+                }
                 supplier.UpdatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 supplier.UpdatedAt = DateTime.Now;
                 if (supplierDAO.Update(supplier) == 1)
@@ -168,6 +190,14 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         {
             Supplier supplier = supplierDAO.getRow(id);
             Link link = linkDAO.getRow(supplier.Id, "supplier");
+            string PathDir = "~/Public/images/suppliers/";
+            // Xoa hinh anh
+            // Xoa file 
+            if (supplier.Img != null)
+            {
+                string DelPath = Path.Combine(Server.MapPath(PathDir), supplier.Img);
+                System.IO.File.Delete(DelPath); // xoa hinh
+            }
             if (supplierDAO.Delete(supplier) == 1)
             {
                 linkDAO.Delete(link);

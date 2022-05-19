@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class SupplierDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Supplier> getList()
+        {
+            return db.Suppliers.ToList();
+        }
         // Tra ve danh sach ca mau tin
         public List<Supplier> getList(string status = "All")
         {

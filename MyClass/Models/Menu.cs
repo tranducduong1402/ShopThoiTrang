@@ -17,12 +17,15 @@ namespace MyClass.Models
         public string Name { get; set; }
         [Required(ErrorMessage = "Đường dẫn không được để trống")]
         public string Link { get; set; }
-        [Required(ErrorMessage = "Phân loại không được để trống")]
-        public string Type { get; set; }
-        public int Table { get; set; }
-        public int ParentId { get; set; }
-        public int Orders { get; set; }
-        [Required]
+        public int? TableId { get; set; }
+        public string TypeMenu { get; set; }
+        public string Position { get; set; }
+        public int? ParentId { get; set; }
+        public int? Orders { get; set; }
+        public int? CreatedBy { get; set; }
+        public DateTime? CreatedAt { get; set; }
+        public int? UpdatedBy { get; set; }
+        public DateTime? UpdatedAt { get; set; }
         public int Status { get; set; }
     }
 }

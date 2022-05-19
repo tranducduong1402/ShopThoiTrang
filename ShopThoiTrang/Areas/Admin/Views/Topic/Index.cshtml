@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MyClass.Models.Topic>
 
 @{
-    ViewBag.Title = "Tất cả danh mục";
+    ViewBag.Title = "Tất cả Chủ đề";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 @section header {
@@ -24,7 +24,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <strong>TẤT CẢ DANH MỤC SẢN PHẨM</strong>
+                        <strong>TẤT CẢ CHỦ ĐỀ</strong>
                     </div>
                     <div class="col-md-6 text-right">
                         <a href="@Url.Action("Create","Topic")" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Thêm</a>
@@ -38,7 +38,7 @@
                     <thead>
                         <tr>
                             <th class="text-center" style="width:20px">#</th>
-                            <th >Tên danh mục</th>
+                            <th >Tên chủ đề</th>
                             <th>Slug</th>
                             <th>Ngày tạo</th>
                             <th class="text-center" style="width:310px" >Chức năng</th>

@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class LinkDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Link> getList()
+        {
+            return db.Links.ToList();
+        }
         // lay 1 mau tin
         public  Link getRow(int tableid, string typelink)
         {

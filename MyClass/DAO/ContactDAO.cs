@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class ContactDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Contact> getList()
+        {
+            return db.Contacts.ToList();
+        }
         // Tra ve danh sach ca mau tin
         public List<Contact> getList(string status = "All")
         {

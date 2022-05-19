@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class TopicDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Topic> getList()
+        {
+            return db.Topics.ToList();
+        }
         // Tra ve danh sach ca mau tin
         public List<Topic> getList(string status = "All")
         {

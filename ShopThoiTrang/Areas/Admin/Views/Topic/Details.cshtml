@@ -1,7 +1,7 @@
 ﻿@model MyClass.Models.Topic
 
 @{
-    ViewBag.Title = "Chi tiết danh mục sản phẩm";
+    ViewBag.Title = "Chi tiết Chủ đề";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -14,7 +14,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <strong>CHI TIẾT DANH MỤC SẢN PHẨM</strong>
+                        <strong>CHI TIẾT CHỦ ĐỀ</strong>
                     </div>
                     <div class="col-md-6 text-right">
                         <a href="@Url.Action("Edit","Topic", new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i> Sửa</a>
@@ -45,8 +45,8 @@
                         <td>@Html.DisplayFor(model => model.Orders)</td>
                     </tr>
                     <tr>
-                        <td>@Html.DisplayNameFor(model => model.MetaDesc)</td>
-                        <td>@Html.DisplayFor(model => model.MetaDesc)</td>
+                        <td>@Html.DisplayNameFor(model => model.Metadesc)</td>
+                        <td>@Html.DisplayFor(model => model.Metadesc)</td>
                     </tr>
                     <tr>
                         <td>@Html.DisplayNameFor(model => model.MetaKey)</td>

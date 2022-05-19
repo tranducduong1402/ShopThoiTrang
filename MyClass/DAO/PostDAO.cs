@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class PostDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Post> getList()
+        {
+            return db.Posts.ToList();
+        }
         // Tra ve danh sach ca mau tin
         public List<Post> getList(string status = "All")
         {

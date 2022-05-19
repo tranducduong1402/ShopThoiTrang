@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MyClass.Models.Topic>
 
 @{
-    ViewBag.Title = "Thùng rác danh mục";
+    ViewBag.Title = "Thùng rác Chủ đề";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 @section header {
@@ -24,7 +24,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <strong>THÙNG RÁC DANH MỤC SẢN PHẨM</strong>
+                        <strong>THÙNG RÁC CHỦ ĐỀ</strong>
                     </div>
                     <div class="col-md-6 text-right">
                         <a href="@Url.Action("Index","Topic")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Về danh sách</a>
@@ -37,7 +37,7 @@
                     <thead>
                         <tr>
                             <th class="text-center" style="width:20px">#</th>
-                            <th>Tên danh mục</th>
+                            <th>Tên chủ đề</th>
                             <th>Slug</th>
                             <th>Ngày tạo</th>
                             <th class="text-center" style="width:240px">Chức năng</th>

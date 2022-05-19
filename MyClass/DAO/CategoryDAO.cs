@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class CategoryDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Category> getList()
+        {           
+            return db.Categorys.ToList();
+        }
         // Tra ve danh sach ca mau tin
         public List<Category> getList(string status="All")
         {

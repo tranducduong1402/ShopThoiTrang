@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class ProductDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Product> getList()
+        {
+            return db.Products.ToList();
+        }
         // Tra ve danh sach ca mau tin
         public List<Product> getList(string status = "All")
         {

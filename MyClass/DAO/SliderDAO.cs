@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class SliderDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Slider> getList()
+        {
+            return db.Sliders.ToList();
+        }
         // Tra ve danh sach ca mau tin
         public List<Slider> getList(string status = "All")
         {

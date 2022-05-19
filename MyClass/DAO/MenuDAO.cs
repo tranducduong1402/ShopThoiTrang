@@ -11,6 +11,10 @@ namespace MyClass.DAO
     public class MenuDAO
     {
         private MyDBContext db = new MyDBContext();
+        public List<Menu> getList()
+        {
+            return db.Menus.ToList();
+        }
         // Tra ve danh sach ca mau tin
         public List<Menu> getList(string status = "All")
         {
