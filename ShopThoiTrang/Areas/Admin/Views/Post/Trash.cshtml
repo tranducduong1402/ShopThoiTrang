@@ -1,7 +1,6 @@
 ﻿@model IEnumerable<MyClass.Models.Post>
-
 @{
-    ViewBag.Title = "Tất cả bài viết";
+    ViewBag.Title = "Thùng rác bài viết";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -25,11 +24,10 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <strong>TẤT CẢ BÀI VIẾT</strong>
+                        <strong>THÙNG RÁC BÀI VIẾT</strong>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a href="@Url.Action("Create","Post")" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Thêm</a>
-                        <a href="@Url.Action("Trash","Post")" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Thùng rác</a>
+                        <a href="@Url.Action("Index","Post")" class="btn btn-sm btn-info"><i class="fas fa-long-arrow-alt-left"></i> Về danh sách</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +53,7 @@
                         {
                         <tr>
                             <td><input type="checkbox" name="checkId" value="" /></td>
-                            <td><img src="~/Public/images/posts/@item.Img" class="img-fluid" alt="Img"/></td>
+                            <td><img src="~/Public/images/posts/@item.Img" class="img-fluid" alt="Img" /></td>
                             <td>@item.Title</td>
                             <td>@item.Detail</td>
                             <td>@item.MetaKey</td>
@@ -63,17 +61,8 @@
                             <td>@Html.DisplayFor(modelItem => item.Slug)</td>
                             <td>@Html.DisplayFor(modelItem => item.CreatedAt)</td>
                             <td>
-                                @if (item.Status == 1)
-                                {
-                                    <a href="@Url.Action("Status","Post", new { id = item.Id })" class="btn btn-sm btn-success"><i class="fas fa-toggle-on"></i> Trạng thái</a>
-                                }
-                                else
-                                {
-                                    <a href="@Url.Action("Status","Post", new { id = item.Id })" class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i> Trạng thái</a>
-                                }
-                                <a href="@Url.Action("Details","Post", new { id = item.Id })" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Xem</a>
-                                <a href="@Url.Action("Edit","Post", new { id = item.Id })" class="btn btn-sm btn-info"><i class="fas fa-edit"></i> Sửa</a>
-                                <a href="@Url.Action("DelTrash","Post", new { id = item.Id })" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xóa</a>
+                                <a href="@Url.Action("Retrash","Post", new { id = item.Id })" class="btn btn-sm btn-info"><i class="fas fa-undo-alt"></i> Khôi phục</a>
+                                <a href="@Url.Action("Delete","Post", new { id = item.Id })" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Xóa vĩnh viễn</a>
                             </td>
                             <td>@item.Id</td>
                         </tr>
@@ -88,5 +77,3 @@
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-
-

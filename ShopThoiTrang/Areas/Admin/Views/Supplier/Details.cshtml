@@ -1,7 +1,7 @@
 ﻿@model MyClass.Models.Supplier
 
 @{
-    ViewBag.Title = "Chi tiết danh mục sản phẩm";
+    ViewBag.Title = "Chi tiết Nhà cung cấp";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -33,24 +33,24 @@
                         <td>@Html.DisplayFor(model => model.Name)</td>
                     </tr>
                     <tr>
-                        <td>@Html.DisplayNameFor(model => model.slug)</td>
-                        <td>@Html.DisplayFor(model => model.slug)</td>
+                        <td>@Html.DisplayNameFor(model => model.Slug)</td>
+                        <td>@Html.DisplayFor(model => model.Slug)</td>
                     </tr>
                     <tr>
-                        <td>@Html.DisplayNameFor(model => model.ParentId)</td>
-                        <td>@Html.DisplayFor(model => model.ParentId)</td>
+                        <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                        <td>@Html.DisplayFor(model => model.Phone)</td>
                     </tr>
                     <tr>
                         <td>@Html.DisplayNameFor(model => model.Orders)</td>
                         <td>@Html.DisplayFor(model => model.Orders)</td>
                     </tr>
                     <tr>
-                        <td>@Html.DisplayNameFor(model => model.MetaDesc)</td>
-                        <td>@Html.DisplayFor(model => model.MetaDesc)</td>
+                        <td>@Html.DisplayNameFor(model => model.Email)</td>
+                        <td>@Html.DisplayFor(model => model.Email)</td>
                     </tr>
                     <tr>
-                        <td>@Html.DisplayNameFor(model => model.MetaKey)</td>
-                        <td>@Html.DisplayFor(model => model.MetaKey)</td>
+                        <td>@Html.DisplayNameFor(model => model.Address)</td>
+                        <td>@Html.DisplayFor(model => model.Address)</td>
                     </tr>
                     <tr>
                         <td>@Html.DisplayNameFor(model => model.CreatedBy)</td>

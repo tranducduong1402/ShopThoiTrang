@@ -43,9 +43,6 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             return View();
         }
 
-        // POST: Admin/Post/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Post post)
@@ -87,9 +84,6 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             return View(post);
         }
 
-        // POST: Admin/Post/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Post post)
@@ -128,8 +122,81 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Post post = postDAO.getRow(id);
-            postDAO.Delete(post);
-            return RedirectToAction("Index");
+            Link link = linkDAO.getRow(post.Id, "post");
+            if (postDAO.Delete(post) == 1)
+            {
+                linkDAO.Delete(link);
+            }
+            TempData["message"] = new XMessage("success", "Xóa mẫu tin thành công");
+            return RedirectToAction("Trash", "Page");
+        }
+
+        public ActionResult Trash()
+        {
+            return View(postDAO.getList("Trash"));
+        }
+
+        public ActionResult Status(int? id)
+        {
+            if (id == null)
+            {
+                TempData["message"] = new XMessage("danger", "Mã loại sản phẩm không tồn tại");
+                return RedirectToAction("Index", "Page");
+            }
+            Post post = postDAO.getRow(id);
+            if (post == null)
+            {
+                TempData["message"] = new XMessage("danger", "Mẫu tin không tồn tại");
+                return RedirectToAction("Index", "Page");
+            }
+            post.Status = (post.Status == 1) ? 2 : 1;
+            post.UpdatedBy = Convert.ToInt32(Session["UserId"].ToString());
+            post.UpdatedAt = DateTime.Now;
+            postDAO.Update(post);
+            TempData["message"] = new XMessage("success", "Thay đổi trạng thái thành công");
+            return RedirectToAction("Index", "Page");
+        }
+
+        public ActionResult DelTrash(int? id)
+        {
+            if (id == null)
+            {
+                TempData["message"] = new XMessage("danger", "Mã loại sản phẩm không tồn tại");
+                return RedirectToAction("Index", "Page");
+            }
+            Post post = postDAO.getRow(id);
+            if (post == null)
+            {
+                TempData["message"] = new XMessage("danger", "Mẫu tin không tồn tại");
+                return RedirectToAction("Index", "Page");
+            }
+            post.Status = 0; //Trạng thái rác = 0
+            post.UpdatedBy = Convert.ToInt32(Session["UserId"].ToString());
+            post.UpdatedAt = DateTime.Now;
+            postDAO.Update(post);
+            TempData["message"] = new XMessage("success", "Xóa vào thành thành công");
+            return RedirectToAction("Index", "Page");
+        }
+
+        public ActionResult Retrash(int? id)
+        {
+            if (id == null)
+            {
+                TempData["message"] = new XMessage("danger", "Mã loại sản phẩm không tồn tại");
+                return RedirectToAction("Trash", "Page");
+            }
+            Post post = postDAO.getRow(id);
+            if (post == null)
+            {
+                TempData["message"] = new XMessage("danger", "Mẫu tin không tồn tại");
+                return RedirectToAction("Trash", "Page");
+            }
+            post.Status = 2; //Trạng thái khoi phuc = 2
+            post.UpdatedBy = Convert.ToInt32(Session["UserId"].ToString());
+            post.UpdatedAt = DateTime.Now;
+            postDAO.Update(post);
+            TempData["message"] = new XMessage("success", "Khôi phục thành công");
+            return RedirectToAction("Trash", "Page");
         }
     }
 }

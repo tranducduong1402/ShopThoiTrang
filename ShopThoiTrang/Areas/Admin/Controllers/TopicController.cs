@@ -49,7 +49,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,slug,ParentId,Orders,MetaDesc,MetaKey,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt,Status")] Topic topic)
+        public ActionResult Create([Bind(Include = "Id,Name,Slug,ParentId,Orders,MetaDesc,MetaKey,CreatedBy,CreatedAt,UpdatedBy,UpdatedAt,Status")] Topic topic)
         {
             if (ModelState.IsValid)
             {
@@ -131,6 +131,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                     Link link = linkDAO.getRow(topic.Id, "topic");
                     link.Slug = topic.Slug;
                     linkDAO.Update(link);
+                    // Cap nhat Menu
                 }
                 TempData["message"] = new XMessage("success", "Cập nhật thành công");
                 return RedirectToAction("Index");
