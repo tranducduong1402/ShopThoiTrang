@@ -4361,6 +4361,9 @@
     <Content Include="Public\img\vintage\DRS-006-0618-13\Thumbs.db" />
     <Content Include="Public\img\vintage\MK-0162-0220-03\Thumbs.db" />
     <Content Include="Public\img\vintage\SRNA-0145-1219-1\Thumbs.db" />
+    <Content Include="Views\Module\MainMenuSub1.cshtml" />
+    <Content Include="Views\Module\MainMenuSub2.cshtml" />
+    <Content Include="Views\Module\Slideshow.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

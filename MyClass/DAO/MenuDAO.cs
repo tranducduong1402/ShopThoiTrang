@@ -11,9 +11,13 @@ namespace MyClass.DAO
     public class MenuDAO
     {
         private MyDBContext db = new MyDBContext();
-        public List<Menu> getList()
+        // tra ve danh sach - trang nguoi dung
+        public List<Menu> getListByParentId(string position, int parentid=0)
         {
-            return db.Menus.ToList();
+            return db.Menus
+                .Where(m => m.ParentId == parentid && m.Status == 1 && m.Position == position)
+                .OrderBy(m=>m.Orders)
+                .ToList();
         }
         // Tra ve danh sach ca mau tin
         public List<Menu> getList(string status = "All")

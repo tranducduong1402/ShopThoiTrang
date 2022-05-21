@@ -11,6 +11,11 @@ namespace MyClass.DAO
     public class SliderDAO
     {
         private MyDBContext db = new MyDBContext();
+
+        public List<Slider> getListByPosition(string position)
+        {
+            return db.Sliders.Where(m => m.Position == position && m.Status == 1).OrderBy(m => m.Orders).ToList();
+        }
         public List<Slider> getList()
         {
             return db.Sliders.ToList();

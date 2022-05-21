@@ -1,1 +1,30 @@
-﻿
+﻿@model IEnumerable<MyClass.Models.Menu>
+<div class="navigation" id="navigation">
+    <div class="header-inner" id="header-inner">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg my-navbar navbar-light p-0">
+                <a href="#" class="navbar-brand"><img src="/Public/img/logo.svg" width="150" class="d-lg-none d-md-block" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav m-auto">
+                        @foreach (var menu in Model)
+                        {
+                            @Html.Action("MainMenuSub", "Module", new { @id = menu.Id})
+                        }
+                    
+                    </ul>
+                </div>
+
+                <form class="form-inline my-2 my-lg-0 d-lg-block d-md-none d-none">
+                </form>
+
+            </nav>
+
+        </div>
+    </div>
+</div>

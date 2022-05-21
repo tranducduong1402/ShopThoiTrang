@@ -18,7 +18,8 @@ namespace MyClass.Models
         [Required]
         public string Link { get; set; }
         public string Img { get; set; }
-        public int Orders { get; set; }
+        public int? Orders { get; set; }
+        public string Position { get; set; }
         public DateTime? CreatedAt { get; set; }
         public int? CreatedBy { get; set; }
         public int? UpdatedBy { get; set; }

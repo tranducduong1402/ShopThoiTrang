@@ -120,103 +120,13 @@
             </div>
         </div>
 
-        <div class="navigation" id="navigation">
-            <div class="header-inner" id="header-inner">
-                <div class="container-fluid">
-                    <nav class="navbar navbar-expand-lg my-navbar navbar-light p-0">
-                        <a href="#" class="navbar-brand"><img src="/Public/img/logo.svg" width="150" class="d-lg-none d-md-block" /></a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </button>
-
-                        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                            <ul class="navbar-nav m-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">TRANG CHỦ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">GIỚI THIỆU</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link" href="#" data-bs-toggle="dropdown">SẢN PHẨM <i class="fas fa-chevron-right"></i></a>
-                                    <ul class="dropdown-menu small-menu">
-                                        <a href="#">Office Carpet Tiles</a>
-                                        <a href="#">Wall to Wall Carpets Dubai</a>
-                                        <a href="#">Vinyl Carpets</a>
-                                        <a href="#">Sisal Carpets</a>
-                                        <a href="#">Office Carpets</a>
-                                        <a href="#">Artificial Grass Carpets</a>
-                                        <a href="#">Exhibition Carpets</a>
-                                        <a href="#">Outdoor Carpets</a>
-                                        <a href="#">Carpet Texture</a>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">TIN TỨC</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">LIÊN HỆ</a>
-                               </li>                             
-                            </ul>
-                        </div>
-
-                        <form class="form-inline my-2 my-lg-0 d-lg-block d-md-none d-none">
-                        </form>
-
-                    </nav>
-
-                </div>
-            </div>
-        </div>
-
-
+        @Html.Action("MainMenu", "Module")
 
     </div>
-
-
-
-
-    <div class="slider-section">
-
-        <!-- revolution slider -->
-        <section class="container-fluid px-lg-1 px-1">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="/Public/img/slider/3.jpg" alt="First slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="/Public/img/slider/2.jpg" alt="Second slide">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="d-block w-100" src="/Public/img/slider/1.jpg" alt="Second slide">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>
-        <!-- revolution slider end -->
-    </div>
-    @RenderBody();
     
-
+    @RenderBody(); 
     <!--footer-->
     <section class="blog-section">
-
         <div class="footer-sections">
             <div class="hidden-xs"
                  style="text-align:center; font-size:35px; color:#333; padding:5px; border-bottom: 1px solid #ccc;">
@@ -259,11 +169,6 @@
                                      width="100%">
                             </div>
                         </div>
-
-
-
-
-
                     </div>
                 </div>
             </div>
@@ -281,51 +186,30 @@
                 </div>
             </div>
             <p style="padding-top:5px; font-size:12px; text-align:center; margin:0px; padding-bottom:5px;">Copyright &copy 2009-2022, MyFlowerTree.com, All Rights Reserved.</p>
-
         </div>
-
 
         <a id="scrollUp" href="#top" data-bs-toggle="tooltip" data-bs-placement="right" title="Go to Top" style="position: fixed; z-index: 2147483647; display: block;">
             <i class="fas fa-long-arrow-alt-up"></i>
         </a>
-
-
 
         <div id="WAButton" class="floating-wpp">
             <div class="floating-wpp-button">
                 <img src="/Public/img/whatsapp-gif.gif">
                 <div class="floating-wpp-button-image"></div>
             </div>
-
         </div>
-
-
-
-
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
         <script src="/Public/js/bootstrap.bundle.min.js"></script>
-
-
-
-
         <script src="/Public/js/jquery-3.3.1.min.js"></script>
-
         <script src="/Public/js/wow.min.js"></script>
         <script src="/Public/js/baguetteBox.min.js"></script>
-
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"></script>
-
-
-
         <script type="text/javascript" src="/Public/js/whatsapp.js"></script>
 
-
-
         <script>
-
             $(function () {
                 $('#WAButton').floatingWhatsApp({
                     phone: '+9717185100', //WhatsApp Business phone number International format-
@@ -355,8 +239,6 @@
             });
         </script>
 
-
-
         <script>
             $(document).ready(function () {
                 $('.close').click(function () {
@@ -367,10 +249,6 @@
                 });
             });
         </script>
-
-
-
-
 
         <script>
             var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -441,8 +319,6 @@
                         autoplaySpeed: 2000,
                     }
                 }]
-
-
             });
 
         </script>
@@ -485,10 +361,7 @@
                         autoplaySpeed: 2000,
                     }
                 }]
-
-
             });
-
         </script>
 
         <script>
@@ -529,10 +402,7 @@
                         autoplaySpeed: 2000,
                     }
                 }]
-
-
             });
-
         </script>
 
 
@@ -547,11 +417,7 @@
                 nextArrow: '<i class="fas fa-chevron-right tab-next"></i>',
                 dots: false,
             });
-
-
         </script>
-
-
 
         <script>
             window.addEventListener('load', function () {
@@ -563,8 +429,6 @@
         <script>
             new WOW().init();
         </script>
-
-
 
         <script>
             $('.blog-slider').slick({
@@ -604,10 +468,6 @@
             });
         </script>
 
-
-
-
-
         <script>
             $(document).ready(function () {
                 $(window).scroll(function () {//scroll--top---indicator---arrow-jquery----//
@@ -619,11 +479,7 @@
                     }
                 });
             });
-
         </script>
-
-
-
 
         <script>
             $(document).ready(function () {
@@ -635,14 +491,8 @@
                         $('#header').addClass('navbar-scroll');
                     }
                 });
-
             });
-
         </script>
-
-
         @RenderSection("footer", required: false)
-
-
 </body>
 </html>
