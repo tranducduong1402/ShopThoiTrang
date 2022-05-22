@@ -9,12 +9,14 @@ using System.Web.Mvc;
 using MyClass.Models;
 using MyClass.DAO;
 using ShopThoiTrang.Library;
+using System.IO;
 
 namespace ShopThoiTrang.Areas.Admin.Controllers
 {
     public class ProductController : Controller
     {
         private ProductDAO productDAO = new ProductDAO();
+        private CategoryDAO categoryDAO = new CategoryDAO();
 
         // GET: Admin/Product
         public ActionResult Index()
@@ -40,8 +42,8 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         // GET: Admin/Product/Create
         public ActionResult Create()
         {
-            ViewBag.ListCat = new SelectList(productDAO.getList("Index"), "Id", "Name", 0);
-            ViewBag.ListOrder = new SelectList(productDAO.getList("Index"), "Orders", "Name", 0);
+            ViewBag.ListCat = new SelectList(categoryDAO.getList("Index"), "Id", "Name", 0);
+            ViewBag.ListOrder = new SelectList(categoryDAO.getList("Index"), "Orders", "Name", 0);
             return View();
         }
 
@@ -55,15 +57,32 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 // Xử lý thêm thông tin
-                
+                product.Slug = XString.str_slug(product.Name);
+                // Upload file
+                var img = Request.Files["img"];
+                if (img.ContentLength != 0)
+                {
+                    string[] FileExtentions = new string[] { ".jpg", ".jepg", ".png", ".gif" };
+                    // Kiem tra tap tin
+                    if (FileExtentions.Contains(img.FileName.Substring(img.FileName.LastIndexOf("."))))
+                    {
+                        // upload hinh
+                        string imgName = product.Slug + img.FileName.Substring(img.FileName.LastIndexOf("."));
+                        product.Img = imgName;
+                        string PathDir = "~/Public/images/products/";
+                        string PathFile = Path.Combine(Server.MapPath(PathDir), imgName);
+                        img.SaveAs(PathFile);
+                    }
+                }
+
                 product.CreatedBy = Convert.ToInt32(Session["UserId"].ToString());
                 product.CreatedAt = DateTime.Now;
                 productDAO.Insert(product);
                 TempData["message"] = new XMessage("success", "Thêm thành công");
-                return RedirectToAction("Index", "Category");
+                return RedirectToAction("Index", "Product");
             }
-            ViewBag.ListCat = new SelectList(productDAO.getList("Index"), "Id", "Name", 0);
-            ViewBag.ListOrder = new SelectList(productDAO.getList("Index"), "Orders", "Name", 0);
+            ViewBag.ListCat = new SelectList(categoryDAO.getList("Index"), "Id", "Name", 0);
+            ViewBag.ListOrder = new SelectList(categoryDAO.getList("Index"), "Orders", "Name", 0);
             return View(product);
         }
 
@@ -91,9 +110,37 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Upload file
+                product.Slug = XString.str_slug(product.Name);
+                var img = Request.Files["img"];
+                if (img.ContentLength != 0)
+                {
+                    string[] FileExtentions = new string[] { ".jpg", ".jepg", ".png", ".gif" };
+                    // Kiem tra tap tin
+                    if (FileExtentions.Contains(img.FileName.Substring(img.FileName.LastIndexOf("."))))
+                    {
+                        // upload hinh
+                        string imgName = product.Slug + img.FileName.Substring(img.FileName.LastIndexOf("."));
+                        product.Img = imgName;
+                        string PathDir = "~/Public/images/products/";
+                        string PathFile = Path.Combine(Server.MapPath(PathDir), imgName);
+                        // Xoa file 
+                        if (product.Img.Length > 0)
+                        {
+                            string DelPath = Path.Combine(Server.MapPath(PathDir), product.Img);
+                            System.IO.File.Delete(DelPath); // xoa hinh
+                        }
+                        img.SaveAs(PathFile);
+                    }
+                }
+                product.UpdatedBy = Convert.ToInt32(Session["UserId"].ToString());
+                product.UpdatedAt = DateTime.Now;
+                TempData["message"] = new XMessage("success", "Cập nhật thành công");
                 productDAO.Update(product);
                 return RedirectToAction("Index");
             }
+            ViewBag.ListCat = new SelectList(categoryDAO.getList("Index"), "Id", "Name", 0);
+            ViewBag.ListOrder = new SelectList(categoryDAO.getList("Index"), "Orders", "Name", 0);
             return View(product);
         }
 
@@ -118,8 +165,17 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = productDAO.getRow(id);
+            string PathDir = "~/Public/images/products/";
+            // Xoa hinh anh
+            // Xoa file 
+            if (product.Img != null)
+            {
+                string DelPath = Path.Combine(Server.MapPath(PathDir), product.Img);
+                System.IO.File.Delete(DelPath); // xoa hinh
+            }
+            TempData["message"] = new XMessage("success", "Xóa mẫu tin thành công");
             productDAO.Delete(product);
-            return RedirectToAction("Index");
+            return RedirectToAction("Trash", "Product");
         }
         public ActionResult Trash()
         {

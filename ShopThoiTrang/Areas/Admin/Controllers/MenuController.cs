@@ -23,6 +23,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             ViewBag.ListTopic = topicDAO.getList("Index");
             ViewBag.ListPage = postDAO.getList("Index", "Page");
             List<Menu> menu = menuDAO.getList("Index");
+            
             return View("Index", menu);
         }
         [HttpPost]
@@ -34,18 +35,21 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                 {
                     var listitem = form["itemcat"]; // 1,2,3,4,5
                     var listarr = listitem.Split(',');
+                    
                     foreach(var row in listarr)
                     {
                         // Id cua category
                         int id = int.Parse(row);
                         Category category = categoryDAO.getRow(id);
+                       
                         Menu menu = new Menu();
                         menu.Name = category.Name;
                         menu.Link = category.Slug;
                         menu.TableId = category.Id;
                         menu.TypeMenu = "category";
                         menu.Position = form["Position"];
-                        menu.ParentId = 0;
+
+                        menu.ParentId = menuDAO.getRowByParenId(category.ParentId).Id;
                         menu.Orders = 0;
                         menu.CreatedAt = DateTime.Now; // Thong tin
                         menu.CreatedBy = (Session["UserId"].Equals("")) ? 1 : int.Parse(Session["UserId"].ToString());
@@ -77,7 +81,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                         menu.TableId = topic.Id;
                         menu.TypeMenu = "topic";
                         menu.Position = form["Position"];
-                        menu.ParentId = 0;
+                        menu.ParentId = menuDAO.getRowByParenId(topic.ParentId).Id; ;
                         menu.Orders = 0;
                         menu.CreatedAt = DateTime.Now; // Thong tin
                         menu.CreatedBy = (Session["UserId"].Equals("")) ? 1 : int.Parse(Session["UserId"].ToString());
@@ -109,7 +113,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
                         menu.TableId = post.Id;
                         menu.TypeMenu = "page";
                         menu.Position = form["Position"];
-                        menu.ParentId = 0;
+                        menu.ParentId = menuDAO.getRowByParenId(post.TopicId).Id; ;
                         menu.Orders = 0;
                         menu.CreatedAt = DateTime.Now; // Thong tin
                         menu.CreatedBy = (Session["UserId"].Equals("")) ? 1 : int.Parse(Session["UserId"].ToString());

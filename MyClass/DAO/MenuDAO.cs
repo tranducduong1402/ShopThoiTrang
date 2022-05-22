@@ -11,6 +11,8 @@ namespace MyClass.DAO
     public class MenuDAO
     {
         private MyDBContext db = new MyDBContext();
+
+      
         // tra ve danh sach - trang nguoi dung
         public List<Menu> getListByParentId(string position, int parentid=0)
         {
@@ -54,6 +56,12 @@ namespace MyClass.DAO
             {
                 return db.Menus.Find(id);
             }
+        }
+
+        public Menu getRowByParenId (int? parenId)
+        {
+            Menu menu = db.Menus.Where(m => m.TableId == parenId).FirstOrDefault(); ;
+            return menu;
         }
         // them mau tin
         public int Insert(Menu row)
