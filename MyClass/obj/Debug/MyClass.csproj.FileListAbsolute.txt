@@ -10,3 +10,15 @@ D:\Duong\Workspace\C#\ShopThoiTrang\MyClass\obj\Debug\MyClass.csproj.CoreCompile
 D:\Duong\Workspace\C#\ShopThoiTrang\MyClass\obj\Debug\MyClass.csproj.CopyComplete
 D:\Duong\Workspace\C#\ShopThoiTrang\MyClass\obj\Debug\MyClass.dll
 D:\Duong\Workspace\C#\ShopThoiTrang\MyClass\obj\Debug\MyClass.pdb
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\bin\Debug\MyClass.dll.config
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\bin\Debug\MyClass.dll
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\bin\Debug\MyClass.pdb
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\bin\Debug\EntityFramework.dll
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\bin\Debug\EntityFramework.xml
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\obj\Debug\MyClass.csproj.AssemblyReference.cache
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\obj\Debug\MyClass.csproj.CoreCompileInputs.cache
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\obj\Debug\MyClass.csproj.CopyComplete
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\obj\Debug\MyClass.dll
+C:\Users\Kien\Desktop\ShopThoiTrang\MyClass\obj\Debug\MyClass.pdb

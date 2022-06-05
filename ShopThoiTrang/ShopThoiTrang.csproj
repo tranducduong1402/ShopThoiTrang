@@ -157,6 +157,7 @@
     <Content Include="Public\contact-buttons-plugin-master\index.html" />
     <Content Include="Public\contact-buttons-plugin-master\js\demo.js" />
     <Content Include="Public\contact-buttons-plugin-master\js\jquery.contact-buttons.js" />
+    <Content Include="Public\controller\userController.js" />
     <Content Include="Public\css\animate.css" />
     <Content Include="Public\css\animate.min.css" />
     <Content Include="Public\css\aos\aos.css" />
@@ -3996,6 +3997,13 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\controller\homeController.js" />
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Scripts\Plugin\Mustache.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -4367,6 +4375,8 @@
     <Content Include="Views\Module\MainMenuSub1.cshtml" />
     <Content Include="Views\Module\MainMenuSub2.cshtml" />
     <Content Include="Views\Module\Slideshow.cshtml" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

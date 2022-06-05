@@ -24,6 +24,11 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
         }
 
         // GET: Admin/Category/Details/5
+
+        public JsonResult List()
+        {
+            return Json(categoryDAO.getList("All"), JsonRequestBehavior.AllowGet);
+        }
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -238,5 +243,7 @@ namespace ShopThoiTrang.Areas.Admin.Controllers
             TempData["message"] = new XMessage("success", "Khôi phục thành công");
             return RedirectToAction("Trash", "Category");
         }
+
+     
     }
 }
